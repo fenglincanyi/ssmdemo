@@ -4,6 +4,9 @@ import com.gjr.po.ItemsCustom;
 import com.gjr.service.ItemsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,11 +58,22 @@ public class ItemsController {
 
     /**
      * 修改商品 提交
+     *
+     * 需要校验的 pojo前必须添加 @Validated, 则必须出现BindingResult；若有多个pojo要校验，则必须是配对出现，且顺序保持一前一后
      */
     @RequestMapping(value = "/editItemsSubmit", method = RequestMethod.POST)
-    public ModelAndView editItemsSubmit(Integer id, ItemsCustom itemsCustom) throws Exception {
-        // id 取到值，在itemsCustom对象中，也能取到 id值，赋给自己到id属性
+    public ModelAndView editItemsSubmit(Integer id, @Validated ItemsCustom itemsCustom,
+                                        BindingResult bindingResult) throws Exception {
 
+        // 若参数不合法
+        if (bindingResult.hasErrors()) {
+            for (ObjectError error : bindingResult.getAllErrors()) {
+                System.out.println(error.getDefaultMessage());
+            }
+        }
+
+
+        // id 取到值，在itemsCustom对象中，也能取到 id值，赋给自己到id属性
         itemsService.updateItemsById(id, itemsCustom);
 
         ModelAndView modelAndView = new ModelAndView();

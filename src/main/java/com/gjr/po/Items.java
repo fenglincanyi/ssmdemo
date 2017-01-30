@@ -1,5 +1,7 @@
 package com.gjr.po;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class Items {
@@ -19,6 +21,7 @@ public class Items {
      *
      * @mbg.generated
      */
+    @Size(min = 5, max = 30, message = "{items.name.length.error}") //使用CustomValidationMessages.properties中定义的
     private String name;
 
     /**
@@ -46,6 +49,7 @@ public class Items {
      *
      * @mbg.generated
      */
+    @NotNull(message = "{items.date.null.error}")
     private Date createtime;
 
     /**
