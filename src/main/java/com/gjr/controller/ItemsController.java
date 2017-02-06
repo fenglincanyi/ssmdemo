@@ -63,7 +63,8 @@ public class ItemsController {
      * 注意： @ResponseBody ItemsCustom
      */
     @RequestMapping(value = "/editItems", method = {RequestMethod.GET, RequestMethod.POST})
-    public @ResponseBody Items editItems(@RequestParam(value = "id") Integer _id) throws Exception {
+    @ResponseBody
+    public Items editItems(@RequestParam(value = "id") Integer _id) throws Exception {
         Items items = itemsService.findItemsById(_id);
 
         System.out.println(items);
