@@ -1,5 +1,6 @@
 package com.gjr.controller;
 
+import com.gjr.po.Items;
 import com.gjr.po.ItemsCustom;
 import com.gjr.service.ItemsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -41,18 +43,31 @@ public class ItemsController {
         return modelAndView;
     }
 
+//    /**
+//     * 修改商品，数据显示
+//     */
+//    @RequestMapping(value = "/editItems", method = {RequestMethod.GET, RequestMethod.POST})
+//    public ModelAndView editItems(@RequestParam(value = "id") Integer _id) throws Exception {
+//        ItemsCustom itemsCustom = itemsService.findItemsById(_id);
+//
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.addObject("itemsCustom", itemsCustom);
+//        modelAndView.setViewName("items/editItems");
+//
+//        return modelAndView;
+//    }
+
     /**
-     * 修改商品，数据显示
+     * 使用 jackson 自动输出pojo对应的 json
+     *
+     * 注意： @ResponseBody ItemsCustom
      */
     @RequestMapping(value = "/editItems", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView editItems(@RequestParam(value = "id") Integer _id) throws Exception {
-        ItemsCustom itemsCustom = itemsService.findItemsById(_id);
+    public @ResponseBody Items editItems(@RequestParam(value = "id") Integer _id) throws Exception {
+        Items items = itemsService.findItemsById(_id);
 
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("itemsCustom", itemsCustom);
-        modelAndView.setViewName("items/editItems");
-
-        return modelAndView;
+        System.out.println(items);
+        return items;
     }
 
 

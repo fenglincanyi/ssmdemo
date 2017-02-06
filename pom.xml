@@ -90,6 +90,18 @@
             <version>5.3.4.Final</version>
         </dependency>
 
+        <!-- springmvc 使用 jackson 进行json与pojo互转-->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+
         <!-- 测试 -->
         <dependency>
             <groupId>junit</groupId>
