@@ -8,6 +8,7 @@ import com.gjr.po.ItemsQueryVo;
 import com.gjr.service.ItemsService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * Created by geng
  * on 2017/1/28.
  */
+@Service
 public class ItemsServiceImpl implements ItemsService{
 
     @Autowired

@@ -25,12 +25,15 @@ import java.util.List;
 @RequestMapping("/items")
 public class ItemsController {
 
-    private final ItemsService itemsService;
+//    private final ItemsService itemsService;
+
+//    @Autowired
+//    public ItemsController(ItemsService itemsService) {
+//        this.itemsService = itemsService;
+//    }
 
     @Autowired
-    public ItemsController(ItemsService itemsService) {
-        this.itemsService = itemsService;
-    }
+    private ItemsService itemsService;
 
     @RequestMapping("/queryItems")
     public ModelAndView queryItems() throws Exception {
