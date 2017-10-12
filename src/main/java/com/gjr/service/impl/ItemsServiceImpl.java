@@ -7,9 +7,9 @@ import com.gjr.po.ItemsCustom;
 import com.gjr.po.ItemsQueryVo;
 import com.gjr.service.ItemsService;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -19,17 +19,17 @@ import java.util.List;
 @Service
 public class ItemsServiceImpl implements ItemsService{
 
-    @Autowired
+    @Resource
     private ItemsCustomMapper itemsCustomMapper;
 
-    @Autowired
+    @Resource
     private ItemsMapper itemsMapper;
 
-    public List<ItemsCustom> findItemsList(ItemsQueryVo itemsQueryVo) throws Exception {
+    public List<ItemsCustom> findItemsList(ItemsQueryVo itemsQueryVo){
         return itemsCustomMapper.findItemsList(itemsQueryVo);
     }
 
-    public ItemsCustom findItemsById(Integer id) throws Exception {
+    public ItemsCustom findItemsById(Integer id){
         Items items = itemsMapper.selectByPrimaryKey(id);
 
         ItemsCustom itemsCustom = new ItemsCustom();
@@ -39,7 +39,7 @@ public class ItemsServiceImpl implements ItemsService{
         return itemsCustom;
     }
 
-    public void updateItemsById(Integer id, ItemsCustom itemsCustom) throws Exception {
+    public void updateItemsById(Integer id, ItemsCustom itemsCustom){
         // 校验id是否为空 等等
         // ...
 

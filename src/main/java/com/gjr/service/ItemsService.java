@@ -12,11 +12,11 @@ import java.util.List;
 public interface ItemsService {
 
     // 商品的查询列表
-    List<ItemsCustom> findItemsList(ItemsQueryVo itemsQueryVo) throws Exception;
+    List<ItemsCustom> findItemsList(ItemsQueryVo itemsQueryVo);
 
     // 根据id查询商品信息
-    ItemsCustom findItemsById(Integer id) throws Exception;
+    ItemsCustom findItemsById(Integer id);
 
     // 修改商品信息 by id
-    void updateItemsById(Integer id, ItemsCustom itemsCustom) throws Exception;
+    void updateItemsById(Integer id, ItemsCustom itemsCustom);
 }
