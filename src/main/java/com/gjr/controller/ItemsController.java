@@ -35,6 +35,10 @@ public class ItemsController {
     @Autowired
     private ItemsService itemsService;
 
+
+    /**
+     * test url:  http://localhost:8080/ssmdemo/items/queryItems
+     */
     @RequestMapping("/queryItems")
     public ModelAndView queryItems() throws Exception {
         // 查询条件为空
@@ -64,6 +68,8 @@ public class ItemsController {
      * 使用 jackson 自动输出pojo对应的 json
      *
      * 注意： @ResponseBody ItemsCustom
+     *
+     * test url:  http://localhost:8080/ssmdemo/items/editItems?id=1
      */
     @RequestMapping(value = "/editItems", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
