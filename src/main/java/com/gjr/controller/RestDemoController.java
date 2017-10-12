@@ -16,12 +16,17 @@ import javax.servlet.http.HttpServletRequest;
  * on 2017/3/19.
  */
 @RestController
-@RequestMapping("/items")
+@RequestMapping("/rest")
 public class RestDemoController{
 
     @Resource
     private ItemsService itemsService;
 
+
+    /**
+     * 访问：
+     * http://localhost:8080/ssmdemo/rest/3
+     */
     @RequestMapping(value = "/{id:\\d}",method = RequestMethod.GET)
     Result query(@PathVariable("id") Integer id,HttpServletRequest request){
         try{
